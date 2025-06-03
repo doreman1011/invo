@@ -10,22 +10,26 @@ if [ ! -d "InvokeAI-Installer" ]; then
     unzip InvokeAI-installer-v5.6.0.zip
 fi
 
-# Go to installer directory
+# Navigate to installer
 echo "==> Navigating to InvokeAI-Installer"
 cd InvokeAI-Installer
 
-# Run install.sh with automated inputs
-echo "==> Running install.sh with inputs"
+# Install required venv package for Python 3.11
+echo "==> Installing python3.11-venv"
+apt update && apt install -y python3.11-venv
+
+# Run the installer with automated inputs
+echo "==> Running install.sh"
 (
-  echo ""    # 1: default install location
-  echo "y"   # 2: confirm
-  echo "4"   # 3: manual install
+  echo ""    # Choose default path
+  echo "y"   # Confirm path
+  echo "4"   # Manual install
 ) | bash install.sh
 
-# Go to the installed InvokeAI folder
+# Navigate to the invokeai install directory
 echo "==> Navigating to /root/invokeai"
 cd /root/invokeai
 
-# Launch InvokeAI Web UI (option 3)
+# Start the Web UI (option 3)
 echo "==> Launching InvokeAI WebUI..."
 echo "1" | bash invoke.sh
