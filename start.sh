@@ -1,17 +1,16 @@
 #!/bin/bash
 set -e
 
-cd /workspace/InvokeAI-installer
+cd /workspace/InvokeAI-installer-v5.6.0
 
-# Automate install.sh with echo pipe
+# Automate installer
 (
-  echo ""    # for default path
-  echo "y"   # confirm path
-  echo "4"   # Choose option 4 (manual model download)
+  echo ""    # default location
+  echo "y"   # confirm
+  echo "4"   # manual download mode
 ) | bash install.sh
 
-# Move into install directory
 cd /root/invokeai
 
-# Auto-confirm model selection
+# Start InvokeAI in Web UI mode
 echo "1" | bash invoke.sh
